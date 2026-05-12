@@ -7802,7 +7802,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="NMD-Rate-Model-%E2%80%94-Project-Overview">NMD Rate Model — Project Overview<a class="anchor-link" href="#NMD-Rate-Model-%E2%80%94-Project-Overview">¶</a></h1><p>A <strong>Bayesian, state-space, hierarchical</strong> model for non-maturing-deposit (NMD)
+<h1 id="NMD-Rate-Model:-Project-Overview">NMD Rate Model: Project Overview<a class="anchor-link" href="#NMD-Rate-Model:-Project-Overview">¶</a></h1><p>A <strong>Bayesian, state-space, hierarchical</strong> model for non-maturing-deposit (NMD)
 rates and volumes, built on real ECB AAA government-bond yield curve data
 (2014–2024).</p>
 <h2 id="Why-this-matters">Why this matters<a class="anchor-link" href="#Why-this-matters">¶</a></h2><p>Non-maturing deposits (current and savings accounts) are a bank's largest and
@@ -7810,10 +7810,10 @@ cheapest funding source, but they carry hidden interest-rate risk because:</p>
 <ul>
 <li>The bank sets the deposit rate <strong>administratively</strong>, with delays, while
 market rates move continuously.</li>
-<li><strong>Pass-through</strong> is heterogeneous across customer segments — corporates are
+<li><strong>Pass-through</strong> is heterogeneous across customer segments: corporates are
 rate-sensitive, retail current-account holders are not.</li>
 <li>During hiking cycles, depositors can withdraw and shift to higher-yielding
-alternatives — <strong>deposit volumes</strong> are a function of the same dynamics.</li>
+alternatives. <strong>Deposit volumes</strong> are a function of the same dynamics.</li>
 </ul>
 <p>Modelling this matters for:</p>
 <ul>
@@ -7847,7 +7847,7 @@ Income (NII) move under stress?</li>
 <tr>
 <td><strong>1. Yield curve</strong></td>
 <td>Bayesian state-space (Kalman in <code>pytensor.scan</code>, NUTS in PyMC)</td>
-<td>Full posterior on factor dynamics — smoother factors than OLS, joint uncertainty</td>
+<td>Full posterior on factor dynamics. Smoother factors than OLS, joint uncertainty</td>
 </tr>
 <tr>
 <td><strong>2. Segments</strong></td>
@@ -7857,7 +7857,7 @@ Income (NII) move under stress?</li>
 <tr>
 <td><strong>3. Volumes</strong></td>
 <td>Hierarchical AR(1) with <strong>soft regime covariate</strong> from stage 2</td>
-<td>Re-uses the Hamilton-filter probabilities — no second latent state to estimate</td>
+<td>Re-uses the Hamilton-filter probabilities: no second latent state to estimate</td>
 </tr>
 </tbody>
 </table>
@@ -7940,7 +7940,7 @@ Segments: ['Retail Current', 'Retail Savings', 'SME Operational', 'Corporate']
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <hr/>
-<h2 id="Part-1-%E2%80%94-Yield-curve:-Bayesian-state-space-Diebold-Li">Part 1 — Yield curve: Bayesian state-space Diebold-Li<a class="anchor-link" href="#Part-1-%E2%80%94-Yield-curve:-Bayesian-state-space-Diebold-Li">¶</a></h2><h3 id="Nelson-Siegel-parameterisation">Nelson-Siegel parameterisation<a class="anchor-link" href="#Nelson-Siegel-parameterisation">¶</a></h3><p>The yield at time $t$ and maturity $\tau$ is a three-factor decomposition:</p>
+<h2 id="Part-1:-Yield-curve:-Bayesian-state-space-Diebold-Li">Part 1: Yield curve: Bayesian state-space Diebold-Li<a class="anchor-link" href="#Part-1:-Yield-curve:-Bayesian-state-space-Diebold-Li">¶</a></h2><h3 id="Nelson-Siegel-parameterisation">Nelson-Siegel parameterisation<a class="anchor-link" href="#Nelson-Siegel-parameterisation">¶</a></h3><p>The yield at time $t$ and maturity $\tau$ is a three-factor decomposition:</p>
 <p>$$
 y_t(\tau) \;=\; L_t \;+\; S_t\cdot\ell_1(\tau) \;+\; C_t\cdot\ell_2(\tau),
 \qquad
@@ -8028,7 +8028,7 @@ that NUTS can autodifferentiate through it (no manual gradients).</li>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Yield curve fit RMSE: </span><span class="si">{</span><span class="n">rmse</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> pp  (over 132 months x 8 maturities)"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Level posterior mean: </span><span class="si">{</span><span class="n">factors_filtered</span><span class="p">[</span><span class="s1">'Level'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Persistence diag(Phi): factors are highly persistent — the level factor"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Persistence diag(Phi): factors are highly persistent: the level factor"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  swings from ~-1% (2015-2019 negative rate era) to ~4% (post-2022 hikes)."</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -8065,7 +8065,7 @@ Persistence diag(Phi): factors are highly persistent — the level factor
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <hr/>
-<h2 id="Part-2-%E2%80%94-Segments:-hierarchical-ECM-with-Markov-regime-switching">Part 2 — Segments: hierarchical ECM with Markov regime switching<a class="anchor-link" href="#Part-2-%E2%80%94-Segments:-hierarchical-ECM-with-Markov-regime-switching">¶</a></h2><h3 id="The-four-segments">The four segments<a class="anchor-link" href="#The-four-segments">¶</a></h3><table>
+<h2 id="Part-2:-Segments:-hierarchical-ECM-with-Markov-regime-switching">Part 2: Segments: hierarchical ECM with Markov regime switching<a class="anchor-link" href="#Part-2:-Segments:-hierarchical-ECM-with-Markov-regime-switching">¶</a></h2><h3 id="The-four-segments">The four segments<a class="anchor-link" href="#The-four-segments">¶</a></h3><table>
 <thead>
 <tr>
 <th>#</th>
@@ -8103,7 +8103,7 @@ Persistence diag(Phi): factors are highly persistent — the level factor
 </table>
 <h3 id="Two-complications-a-static-regression-cannot-handle">Two complications a static regression cannot handle<a class="anchor-link" href="#Two-complications-a-static-regression-cannot-handle">¶</a></h3><ol>
 <li><strong>Sluggish adjustment.</strong> Deposit rates don't jump instantaneously when
-market rates move — banks adjust admin rates with a lag.</li>
+market rates move, rather banks adjust admin rates with a lag.</li>
 <li><strong>Regime-dependent pass-through.</strong> In the negative-rate era (2015–2021)
 banks did not pass cuts through to depositors; in the 2022+ hiking cycle
 they did, significantly.</li>
@@ -8126,7 +8126,7 @@ $$</p>
 <p>The <strong>half-life</strong> of adjustment is $\tau_{1/2}=-\log 2/\log(1+\gamma_s)$ months.</p>
 <h3 id="Hidden-Markov-regime-+-Hamilton-filter">Hidden Markov regime + Hamilton filter<a class="anchor-link" href="#Hidden-Markov-regime-+-Hamilton-filter">¶</a></h3><p>$z_t \in \{0, 1\}$ follows a two-state Markov chain with transition
 probabilities $p_{00}, p_{11}$. The regime is <strong>latent</strong>, so we don't
-condition on it — we marginalise it out using the <strong>Hamilton (1989) filter</strong>:</p>
+condition on it. We marginalise it out using the <strong>Hamilton (1989) filter</strong>:</p>
 <p>$$
 \boxed{\;\xi_{t\mid t}(k) \;=\;
 \frac{\xi_{t\mid t-1}(k)\,f_k(\Delta r_t)}
@@ -8143,7 +8143,7 @@ impose $\mu^{(1)}_{\beta L} = \mu^{(0)}_{\beta L} + \delta$ with $\delta&gt;0$.<
 they are draws from common population distributions (e.g.
 $\beta^{L,(k)}_s\sim \mathcal N(\mu^{(k)}_{\beta L}, \sigma_{\beta L})$).
 This <strong>partial pooling</strong> shrinks noisy segment estimates toward the
-population mean — segments with weaker data borrow strength from segments
+population mean: segments with weaker data borrow strength from segments
 with richer data.</p>
 <p>Non-centred parameterisation is used throughout to keep the MCMC geometry
 well-behaved.</p>
@@ -8184,7 +8184,7 @@ well-behaved.</p>
 </tbody>
 </table>
 <p>Both are implemented identically as differentiable <code>pytensor.scan</code> loops.</p>
-<h3 id="Headline-result-%E2%80%94-the-filter-finds-the-structural-break">Headline result — the filter finds the structural break<a class="anchor-link" href="#Headline-result-%E2%80%94-the-filter-finds-the-structural-break">¶</a></h3>
+<h3 id="Headline-result:-the-filter-finds-the-structural-break">Headline result: the filter finds the structural break<a class="anchor-link" href="#Headline-result:-the-filter-finds-the-structural-break">¶</a></h3>
 </div>
 </div>
 </div>
@@ -8206,7 +8206,7 @@ well-behaved.</p>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">))</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dates_filt</span><span class="p">,</span> <span class="n">p_hiking</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"#d62728"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.9</span><span class="p">,</span>
-        <span class="n">label</span><span class="o">=</span><span class="s2">"P(hiking regime | data) — Hamilton filter posterior mean"</span><span class="p">)</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">"P(hiking regime | data) (Hamilton filter posterior mean)"</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">dates_filt</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">true_r1</span> <span class="o">*</span> <span class="mf">0.05</span><span class="p">,</span>
                 <span class="n">color</span><span class="o">=</span><span class="s2">"orange"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"True regime-1 indicator (bottom bar)"</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"gray"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">":"</span><span class="p">)</span>
@@ -8308,8 +8308,8 @@ Reading the table:
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <hr/>
-<h2 id="Part-3-%E2%80%94-Volumes:-hierarchical-AR(1)-with-regime-soft-spread-sensitivity">Part 3 — Volumes: hierarchical AR(1) with regime-soft spread sensitivity<a class="anchor-link" href="#Part-3-%E2%80%94-Volumes:-hierarchical-AR(1)-with-regime-soft-spread-sensitivity">¶</a></h2><p>Rates aren't the whole story for NII. When market rates rise above what
-depositors get paid, money walks — depositors shift funds to higher-yielding
+<h2 id="Part-3:-Volumes:-hierarchical-AR(1)-with-regime-soft-spread-sensitivity">Part 3: Volumes: hierarchical AR(1) with regime-soft spread sensitivity<a class="anchor-link" href="#Part-3:-Volumes:-hierarchical-AR(1)-with-regime-soft-spread-sensitivity">¶</a></h2><p>Rates aren't the whole story for NII. When market rates rise above what
+depositors get paid, money walks: depositors shift funds to higher-yielding
 alternatives (money-market funds, term deposits). Volumes contract.</p>
 <h3 id="Model">Model<a class="anchor-link" href="#Model">¶</a></h3><p>Log-volumes follow a partial-adjustment AR(1) per segment:</p>
 <p>$$
@@ -8330,22 +8330,22 @@ $$</p>
 $$</p>
 <p>The interpretation:</p>
 <ul>
-<li>$\rho_s\in(0,1)$ — <strong>persistence</strong>. Retail balances are sticky
+<li>$\rho_s\in(0,1)$ represents <strong>persistence</strong>. Retail balances are sticky
 ($\rho \approx 0.98$); corporate balances less so ($\rho\approx 0.88$).</li>
-<li>$\beta^0_s$ — spread sensitivity in the <strong>low-rate regime</strong> (mild).</li>
-<li>$\Delta\beta_s$ — <strong>additional</strong> sensitivity in the hiking regime. The
+<li>$\beta^0_s$: spread sensitivity in the <strong>low-rate regime</strong> (mild).</li>
+<li>$\Delta\beta_s$ captures <strong>additional</strong> sensitivity in the hiking regime. The
 sign constraint $\Delta\beta_s&lt;0$ forces total sensitivity to grow
 in absolute value during the hiking cycle (more disintermediation).</li>
 </ul>
 <h3 id="Re-using-stage-2's-regime-probabilities">Re-using stage 2's regime probabilities<a class="anchor-link" href="#Re-using-stage-2's-regime-probabilities">¶</a></h3><p>We don't introduce a second latent state. Instead the regime probability
 $p_{t-1}=P(z_{t-1}=1\mid\text{data})$ is taken directly from the Hamilton
 filter of stage 2 and used as a <strong>soft continuous covariate</strong>. The volume
-model inherits the regime dynamics from the rates model — no double-counting,
+model inherits the regime dynamics from the rates model: no double-counting,
 no second Hamilton filter.</p>
 <h3 id="Hierarchical-structure-with-non-funnel-%CF%83-priors">Hierarchical structure with non-funnel σ priors<a class="anchor-link" href="#Hierarchical-structure-with-non-funnel-%CF%83-priors">¶</a></h3><p>Population-level priors share information across the 4 segments
 ($\mu_{\log|\beta^0|}, \sigma_{\log|\beta^0|}$ etc.), with non-centred
 parameterisation for the segment-level draws. We use <strong>LogNormal</strong> priors on
-the hyperparameter scales (rather than HalfNormal) — this keeps prior density
+the hyperparameter scales (rather than HalfNormal). This keeps prior density
 at $\sigma = 0$ to zero, which kills the classic hierarchical "funnel"
 divergence that arises with only 4 segments informing $\sigma$:</p>
 <p>$$
@@ -8463,7 +8463,7 @@ $$</p>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"   for a shock to log-volume to decay by half."</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">" - beta_V^k &lt; 0 means: wider spread (depositor sees better alternative)"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"   =&gt; log-volume falls. beta_V^1 is steeper, so disintermediation is"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"   faster in the hiking regime — exactly the behavioural story."</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"   faster in the hiking regime (exactly the behavioural story)."</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -8504,7 +8504,7 @@ Reading the table:
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <hr/>
-<h2 id="Part-4-%E2%80%94-IRRBB-scenarios:-rates-and-NII-at-the-12-month-horizon">Part 4 — IRRBB scenarios: rates and NII at the 12-month horizon<a class="anchor-link" href="#Part-4-%E2%80%94-IRRBB-scenarios:-rates-and-NII-at-the-12-month-horizon">¶</a></h2><p>We take the last observed yield curve and apply five standard regulatory
+<h2 id="Part-4:-IRRBB-scenarios:-rates-and-NII-at-the-12-month-horizon">Part 4: IRRBB scenarios: rates and NII at the 12-month horizon<a class="anchor-link" href="#Part-4:-IRRBB-scenarios:-rates-and-NII-at-the-12-month-horizon">¶</a></h2><p>We take the last observed yield curve and apply five standard regulatory
 rate shocks, linearly ramped over 12 months:</p>
 <table>
 <thead>
@@ -8543,8 +8543,8 @@ rate shocks, linearly ramped over 12 months:</p>
 </tbody>
 </table>
 <p>Under each, we sample from the <strong>full posterior predictive</strong> of (i) the ECM
-model — giving deposit rate trajectories per segment with sluggish adjustment,
-and (ii) the volume model — giving volumes and NII. Posterior uncertainty is
+model, giving deposit rate trajectories per segment with sluggish adjustment,
+and (ii) the volume model, giving volumes and NII. Posterior uncertainty is
 carried through; we display the median and 80% predictive interval.</p>
 </div>
 </div>
@@ -8628,7 +8628,7 @@ carried through; we display the median and 80% predictive interval.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"(</span><span class="si">{:.0f}</span><span class="s2">% Retail Current to </span><span class="si">{:.0f}</span><span class="s2">% Corporate) is the headline economic "</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
     <span class="n">pt12</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="n">pt12</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span>
 <span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"output of the model — it directly drives IRRBB and NII sensitivity reports."</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"output of the model: it directly drives IRRBB and NII sensitivity reports."</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -8673,7 +8673,7 @@ output of the model — it directly drives IRRBB and NII sensitivity reports.
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <hr/>
-<h2 id="Technical-highlights-%E2%80%94-what's-novel">Technical highlights — what's novel<a class="anchor-link" href="#Technical-highlights-%E2%80%94-what's-novel">¶</a></h2><table>
+<h2 id="Technical-highlights:-what's-novel">Technical highlights: what's novel<a class="anchor-link" href="#Technical-highlights:-what's-novel">¶</a></h2><table>
 <thead>
 <tr>
 <th>Stage</th>
@@ -8684,7 +8684,7 @@ output of the model — it directly drives IRRBB and NII sensitivity reports.
 <tbody>
 <tr>
 <td>1</td>
-<td><strong>Kalman filter inside NUTS</strong> via <code>pytensor.scan</code> for the Diebold-Li state-space — gives the exact marginal likelihood, differentiable end-to-end</td>
+<td><strong>Kalman filter inside NUTS</strong> via <code>pytensor.scan</code> for the Diebold-Li state-space gives the exact marginal likelihood, differentiable end-to-end</td>
 <td><code>src/diebold_li.py</code></td>
 </tr>
 <tr>
@@ -8699,12 +8699,12 @@ output of the model — it directly drives IRRBB and NII sensitivity reports.
 </tr>
 <tr>
 <td>3</td>
-<td><strong>Soft regime covariate</strong> — the volume model re-uses the Hamilton filter posterior probabilities from stage 2, avoiding a second latent state</td>
+<td><strong>Soft regime covariate</strong>: the volume model re-uses the Hamilton filter posterior probabilities from stage 2, avoiding a second latent state</td>
 <td><code>src/volume.py</code></td>
 </tr>
 <tr>
 <td>3</td>
-<td><strong>LogNormal hyperparameter scales</strong> instead of HalfNormal — kills the hierarchical-funnel divergence that arises with only S=4 segments to inform $\sigma$</td>
+<td><strong>LogNormal hyperparameter scales</strong> instead of HalfNormal, which kills the hierarchical-funnel divergence that arises with only S=4 segments to inform $\sigma$</td>
 <td><code>build_volume_model</code></td>
 </tr>
 <tr>
@@ -8723,7 +8723,7 @@ output of the model — it directly drives IRRBB and NII sensitivity reports.
   repricing.py     Static repricing (legacy, kept for comparison)
 
 notebooks/
-  00_main.ipynb       (this notebook — overview)
+  00_main.ipynb       (this summary notebook)
   01_theory.ipynb     full theoretical derivation
   02_data.ipynb       ECB ingestion + simulated deposits
   02_simulation.ipynb stand-alone synthetic DGP
